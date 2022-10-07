@@ -1,0 +1,40 @@
+{{!< default}}
+
+{{#post}}
+
+<section class="post">
+	<div class="post-header">
+		<div class="margin-15">
+			<h2 class="post-header__title">{{title}}</h2>
+		</div>
+		
+		<div class="date-and-tags">
+			<span class="post-header__date">{{date}}</span>
+			<span class="bull">&bull;</span>
+			<span class="post-header__tags">{{tags}}</span>
+			<span class="bull">&bull;</span>
+			<span class="post-header__reading-time">{{reading_time}}</span>
+		</div>
+	</div>
+	
+	<div class="post-body">
+		<div class="margin-15">
+			{{#if feature_image}}
+				<img class="post-body__main-img" src="{{feature_image}}" alt="{{title}}">  
+			{{/if}}
+			<div class="post-body__content">
+				{{content}}
+			</div>
+		</div>
+		
+
+		{{#if @custom.show_related_posts}}
+        {{> "related"}}
+   		{{/if}}
+	</div>
+</section>
+
+
+{{/post}}
+
+

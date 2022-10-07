@@ -1,0 +1,83 @@
+{{!< default}}
+
+
+
+<div class="author-page">
+	{{#author}}
+	<div class="author-head">
+		{{#if cover_image}}
+		<div class="author-head__info">
+			{{#if profile_image}}
+			<img class="author-head__img author-head__img_white" src="{{profile_image}}" alt="{{name}}">
+			{{/if}}
+				<h1 class="author-head__name author-head__name_white">{{name}}</h1>
+			{{#if bio}}
+				<p class="author-head__bio author-head__bio_white">{{bio}}</p>
+			{{/if}}
+			<div class="author-head__links author-head__links_white">
+				{{#if website}}
+					<a href="{{website}}" target="_blank" rel="noopener">Website</a>
+				{{/if}}
+				{{#if twitter}}
+					<a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a>
+				{{/if}}
+				{{#if facebook}}
+					<a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a>
+				{{/if}}
+			</div>
+		</div>
+        <img class="author-head__cover-image" src="{{cover_image}}" />
+		{{else}}
+		<div class="author-head__info">
+			{{#if profile_image}}
+			<img class="author-head__img author-head__img_dark" src="{{profile_image}}" alt="{{name}}">
+			{{/if}}
+				<h1 class="author-head__name author-head__name_dark">{{name}}</h1>
+			{{#if bio}}
+				<p class="author-head__bio author-head__bio_dark">{{bio}}</p>
+			{{/if}}
+			<div class="author-head__links author-head__links_dark">
+				{{#if website}}
+					<a href="{{website}}" target="_blank" rel="noopener">Website</a>
+				{{/if}}
+				{{#if twitter}}
+					<a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a>
+				{{/if}}
+				{{#if facebook}}
+					<a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a>
+				{{/if}}
+			</div>
+		</div>
+        {{/if}}
+	</div>
+	{{/author}}
+	<div class="author-body">
+		<div class="margin-15">
+			<div class="posts-block__header">
+			<h2 class="posts-block__title">Posts by this author</h2>
+			</div>
+			<div class="posts-block__content">
+				{{#foreach posts}}
+					{{> post-card}}
+				{{/foreach}}
+			</div>
+			
+		</div>
+		
+	</div>
+	{{#if @site.members_enabled}}
+		{{#unless @member}}
+			<section class="cta-subscribe">
+				<div class="cta-subscribe__container">
+					{{#if @custom.email_signup_text}}<h2 class="cta-subscribe__title">{{@custom.email_signup_text}}</h2>{{/if}}
+					<p class="cta-subscribe__suptitle">A bi-weekly newsletter of design inspiration, resources and anything related to career development.</p>
+					<a class="cta-subscribe__button" href="#/portal" data-portal>
+						<div class="cta-subscribe__input">Enter your email</div>
+						<span>Subscribe</span>
+					</a>
+				</div>
+			</section>
+		{{/unless}}
+		{{/if}}
+</div>
+

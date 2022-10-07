@@ -1,0 +1,58 @@
+{{!< default}}
+
+
+{{#tag}}
+<div class="post-header">
+	{{#if feature_image}}
+	<div class="post-header__content">
+		<div class="margin-15">
+			<h2 class="tag-title tag-title_white">{{name}}</h2>
+			<p class="tag-description tag-description_white">
+			{{#if description}}
+				{{description}}
+			{{else}}
+				A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+			{{/if}}
+			</p>
+		</div>
+		
+	</div>
+	<img class="tag-image" src="{{feature_image}}" alt="{{name}}" />
+	{{else}}
+	<div class="post-header__content">
+		<h2 class="tag-title tag-title_dark">{{name}}</h2>
+		<p class="tag-description tag-description_dark">
+		{{#if description}}
+			{{description}}
+		{{else}}
+			A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+		{{/if}}
+   		 </p>
+	</div>
+	{{/if}}
+</div>
+
+
+
+<section class="tag-main">
+	
+	<div class="container-main">
+		<div class="margin-15">
+		
+			<section class="posts-block">
+				<div class="posts-block__header">
+					<h2 class="posts-block__title">Posts with <span style="color: var(--ghost-accent-color);">"{{name}}"</span> tag</h2>
+						{{/tag}}
+				</div>
+				<div class="posts-block__content">
+					{{#foreach posts}}
+						{{> post-card}}
+					{{/foreach}}
+				</div>
+			</section>
+		</div>
+		
+		
+	</div>
+</section>
+

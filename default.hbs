@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}"
+<head>
+ 	{{!-- Basic meta - advanced meta is output with {ghost_head} below --}}
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	{{!-- Theme assets - use the {asset} helper to reference styles & scripts,
+    this will take care of caching and cache-busting automatically --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+	<link rel="stylesheet" type="text/css" href="{{asset "built/normalize.css"}}" />
+	<link rel="stylesheet" type="text/css" href="{{asset "built/ghost_screen.css"}}" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+	{{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
+    it should always be the last tag before the closing head tag --}}
+    {{ghost_head}}
+</head>
+<body>
+
+	<header class="header-container">
+
+		<div class="upper-header">
+			{{#if @site.logo}}
+				<img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+			{{/if}}
+			<h1 class="site-title">{{@site.title}}</h1>
+			<div class="hamburger-menu">
+				<input id="menu__toggle" type="checkbox" />
+				<label class="menu__btn" for="menu__toggle">
+				<span></span>
+				</label>
+
+				<ul class="menu__box">
+					{{navigation}}
+				</ul>
+			</div>
+
+			<div class="header-nav-and-signup">
+				<div class="header-nav">{{navigation}}</div>
+				{{search}}
+				<div class="header-signup">
+					{{#if @site.members_enabled}}
+						{{#unless @member}}
+							<a class="gh-head-button" href="#/portal/signup" data-portal="signup">Subscribe</a>
+						{{else}}
+							<a class="gh-head-button" href="#/portal/account" data-portal="account">Account</a>
+						{{/unless}}
+					{{/if}}
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+	<div class="site-content">
+        {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+    </div>
+
+    {{!-- The global footer at the very bottom of the screen --}}
+    <footer class="site-footer">
+        <div class="site-footer__content">
+            <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+        </div>
+    </footer>
+
+	{{ghost_foot}}
+	
+</body>
+</html>
